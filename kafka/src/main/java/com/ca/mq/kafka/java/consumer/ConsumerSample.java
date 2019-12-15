@@ -17,7 +17,7 @@ public class ConsumerSample {
         String topic = "test-topic";
 
         Properties props = new Properties();
-        props.put("bootstrap.servers", "localhost:9092");
+        props.put("bootstrap.servers", "39.100.121.226:9092");
         props.put("group.id", "testGroup1");
         //Consumer的offset是否自动提交
         props.put("enable.auto.commit", "true");

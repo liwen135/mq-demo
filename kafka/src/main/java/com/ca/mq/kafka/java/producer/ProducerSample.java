@@ -12,7 +12,7 @@ public class ProducerSample {
     public static void main(String[] args) {
         Map<String, Object> props = new HashMap<String, Object>();
         //bootstrap.servers Kafka集群，多台机器逗号分隔
-        props.put("bootstrap.servers", "localhost:9042");
+        props.put("bootstrap.servers", "39.100.121.226:9042");
         //key.serializer value.serializer消息序列化类型
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
@@ -21,7 +21,7 @@ public class ProducerSample {
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeSerializer");
 
         //zk.connect zk服务器
-        props.put("zk.connect", "127.0.0.1:2181");
+        props.put("zk.connect", "39.100.121.226:2181");
 
         String topic = "test-topic";
         System.out.println("start");

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd    ">
+    <!--消费者配置-->
+    <bean id="consumerFactory" class="org.springframework.kafka.core.DefaultKafkaConsumerFactory">
+        <constructor-arg name="configs">
+            <map>
+                <entry key="bootstrap.servers" value="39.100.121.226:9092"/>
+                <entry key="group.id" value="testGroup2"/>
+                <entry key="key.deserializer" value="org.apache.kafka.common.serialization.StringDeserializer"/>
+                <entry key="value.deserializer" value="org.apache.kafka.common.serialization.StringDeserializer"/>
+            </map>
+        </constructor-arg>
+    </bean>
+    <bean id="consumerListener" class="com.ca.mq.kafka.spring.KafkaConsumerListener"/>
+    <bean id="containerProperties_example" class="org.springframework.kafka.listener.ContainerProperties">
+        <constructor-arg value="kafka-topic"/>
+        <property name="messageListener" ref="consumerListener"/>
+    </bean>
+    <bean id="messageListenerContainer_example"
+          class="org.springframework.kafka.listener.KafkaMessageListenerContainer">
+        <constructor-arg ref="consumerFactory"/>
+        <constructor-arg ref="containerProperties_example"/>
+    </bean>
+
+</beans>

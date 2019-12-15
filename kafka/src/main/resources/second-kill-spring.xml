@@ -58,8 +58,10 @@
     </bean>
     <bean id="jedisPool" class="redis.clients.jedis.JedisPool" destroy-method="destroy" depends-on="poolConfig">
         <constructor-arg name="poolConfig" ref="poolConfig"/>
-        <constructor-arg name="host" value="localhost"/>
+        <constructor-arg name="host" value="139.155.77.184"/>
         <constructor-arg name="port" value="6379"/>
+        <constructor-arg name="timeout" value="1000"/>
+        <constructor-arg name="password" value="123123"/>
     </bean>
 
 </beans>
